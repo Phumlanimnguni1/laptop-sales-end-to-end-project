@@ -1,6 +1,6 @@
 -- create one database for staging and another database for cleaned dataset known as datawarehouse
-create database computer_std;
-create database computer_whd;
+--create database computer_std;
+--create database computer_whd;
 
 -- staging
 --Creating Fact and Dim_tables
@@ -23,7 +23,7 @@ CREATE TABLE [computer_std].[dbo].[dim_customer](
 [Customer_Name] [nvarchar](50) NOT NULL,
 [Customer_Surname] [nvarchar](50) NOT NULL,
 [Customer_Contact_Number] [nvarchar](50) NOT NULL,
-[Customer_Email_Address] [nvarchar](50) NOT NULL
+[Customer_Email_Address] [nvarchar](100) NOT NULL
 );
 --2 insert data into customer table
 
@@ -118,7 +118,7 @@ SELECT DISTINCT Purchase_Date, Ship_Date FROM [computer_std].[dbo].[raw_pc_data]
 CREATE TABLE [computer_std].[dbo].[dim_store](
 [StoreID] INT IDENTITY(1,1) PRIMARY KEY,
 [Shop_Name] [nvarchar](50) NOT NULL,
-[Shop_Age] [nvarchar](50) NOT NULL
+[Shop_Age] INT NOT NULL
 );
 --2 insert data into store table
 
