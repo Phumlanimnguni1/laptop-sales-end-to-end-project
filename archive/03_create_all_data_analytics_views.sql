@@ -110,3 +110,31 @@ INNER JOIN
 GROUP BY 
     d.Purchase_Date;
 GO
+
+-- ====================================================================
+-- 6. Regional Channel Revenue View
+-- Purpose: Cross-references sales channels with geographic locations
+-- it reveals exactly how different areas prefer to shop
+-- ====================================================================
+CREATE OR ALTER VIEW [dbo].[vw_RegionalChannelRevenue]
+AS
+SELECT 
+    loc.Continent,
+    loc.Country_or_State AS Country,
+    loc.Province_or_City AS Province_City,
+    ch.Channel AS Sales_Channel,
+    COUNT(f.SalesID) AS Total_Transactions,
+    SUM(f.Sale_Price) AS Total_Revenue,
+    AVG(f.Sale_Price) AS Average_Transaction_Value
+FROM 
+    [dbo].[fact_pc_sales] f
+INNER JOIN 
+    [dbo].[dim_location] loc ON f.LocationID = loc.LocationID
+INNER JOIN 
+    [dbo].[dim_channel] ch ON f.ChannelID = ch.ChannelID
+GROUP BY 
+    loc.Continent,
+    loc.Country_or_State,
+    loc.Province_or_City,
+    ch.Channel;
+GO
