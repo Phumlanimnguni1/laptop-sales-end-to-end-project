@@ -17,6 +17,9 @@ The dataset represents transactional PC sales, tracking hardware specifications,
 
 ----------------------------------------------------------------------------------------------------
 ## Architecture
+
+<img width="1340" height="781" alt="data_architecture" src="https://github.com/user-attachments/assets/e10d8da2-fc69-4617-8375-e42b2d7ea75d" />
+
 ## Databases
 
 1. **Staging Layer**
